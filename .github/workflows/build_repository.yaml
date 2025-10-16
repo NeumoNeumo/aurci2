@@ -1,4 +1,4 @@
-Onname: Make Repository
+name: Make Repository
 
 on:
   push:
