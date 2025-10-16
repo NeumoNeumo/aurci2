@@ -21,6 +21,7 @@ jobs:
       with:
         packages: >
           sway-git
+          wlroots-git
           mogan-bin
           portable
           swaylock-plugin
