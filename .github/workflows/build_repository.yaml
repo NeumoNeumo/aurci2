@@ -20,11 +20,12 @@ jobs:
       uses: kopp/build-aur-packages@v1
       with:
         packages: >
-          sway-git
-          wlroots-git
           mogan-bin
           portable
           swaylock-plugin
+          spotify
+          # sway-git
+          # wlroots-git
 
     - name: List generated Files
       run: ls -1 > ${{ github.workspace }}/files.txt
