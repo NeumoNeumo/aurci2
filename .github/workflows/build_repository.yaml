@@ -24,8 +24,6 @@ jobs:
           portable
           swaylock-plugin
           spotify
-          # sway-git
-          # wlroots-git
 
     - name: List generated Files
       run: ls -1 > ${{ github.workspace }}/files.txt
