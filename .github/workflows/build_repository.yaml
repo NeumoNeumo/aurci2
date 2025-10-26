@@ -23,7 +23,6 @@ jobs:
           mogan-bin
           portable
           swaylock-plugin
-          spotify
 
     - name: List generated Files
       run: ls -1 > ${{ github.workspace }}/files.txt
