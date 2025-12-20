@@ -20,10 +20,12 @@ jobs:
       uses: NeumoNeumo/build-aur-packages@master
       with:
         packages: >
+          howdy-git
           mogan-bin
           portable
           swaylock-plugin
           sioyek-git
+          howdy-git
 
     - name: List generated Files
       run: ls -1 > ${{ github.workspace }}/files.txt
