@@ -24,6 +24,7 @@ jobs:
           portable
           swaylock-plugin
           sioyek-git
+          xray-bin
           libfprint-cs9711-git
 
     - name: List generated Files
