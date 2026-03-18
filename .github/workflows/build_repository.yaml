@@ -22,7 +22,7 @@ jobs:
         packages: >
           papis
           papis-zotero
-        missing-aur-dependencies: >
+        missing_aur_dependencies: >
           python-sphinx_design
 
     - name: List generated Files
