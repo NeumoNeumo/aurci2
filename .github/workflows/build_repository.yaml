@@ -23,10 +23,7 @@ jobs:
           papis
           papis-zotero
         missing-aur-dependencies: >
-          python-sphinx-design
-          python-sphinx-click
-          python-markdownify
-          python-whoosh
+          python-sphinx_design
 
     - name: List generated Files
       run: ls -1 > ${{ github.workspace }}/files.txt
