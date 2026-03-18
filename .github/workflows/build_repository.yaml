@@ -20,6 +20,12 @@ jobs:
       uses: NeumoNeumo/build-aur-packages@master
       with:
         packages: >
+          mogan-bin
+          portable
+          swaylock-plugin
+          sioyek-git
+          xray-bin
+          libfprint-cs9711-git
           papis
           papis-zotero
         missing_aur_dependencies: >
