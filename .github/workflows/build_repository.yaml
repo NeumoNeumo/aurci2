@@ -26,10 +26,6 @@ jobs:
           sioyek-git
           xray-bin
           libfprint-cs9711-git
-          papis
-          papis-zotero
-        missing_aur_dependencies: >
-          python-sphinx_design
 
     - name: List generated Files
       run: ls -1 > ${{ github.workspace }}/files.txt
