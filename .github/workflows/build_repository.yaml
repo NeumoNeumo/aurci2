@@ -20,6 +20,7 @@ jobs:
       uses: NeumoNeumo/build-aur-packages@master
       with:
         packages: >
+          rime-frost-git
           mogan-bin
           portable
           swaylock-plugin
