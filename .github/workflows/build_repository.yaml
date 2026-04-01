@@ -21,6 +21,14 @@ jobs:
       with:
         packages: >
           rime-frost-git
+          libfprint-cs9711-git
+          mogan-bin
+          portable
+          swaylock-plugin
+          sioyek-git
+          xray-bin
+          papis
+          papis-zotero
         missing_aur_dependencies: >
           python-sphinx_design
 
