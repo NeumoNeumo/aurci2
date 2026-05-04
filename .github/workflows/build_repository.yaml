@@ -16,6 +16,9 @@ jobs:
       id: date
       run: echo "::set-output name=date::$(date +'%Y-%m-%d %H:%M')"
 
+    - name: Checkout
+      uses: actions/checkout@v6
+
     - name: Build Packages
       uses: NeumoNeumo/build-aur-packages@master
       with:
