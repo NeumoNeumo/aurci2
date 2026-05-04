@@ -1,0 +1,26 @@
+pkgname=slurp
+pkgver=1.5.0
+pkgrel=1
+pkgdesc="Select a region in a Wayland compositor"
+arch=('x86_64')
+url="https://github.com/Yiin/slurp"
+license=('MIT')
+depends=('cairo' 'libxkbcommon' 'wayland')
+makedepends=('git' 'meson' 'scdoc' 'wayland-protocols')
+source=("slurp::git+https://github.com/Yiin/slurp.git#branch=fix-segfault-during-init")
+sha256sums=('SKIP')
+
+pkgver() {
+  cd slurp
+  git describe --tags --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+build() {
+  arch-meson slurp build
+  meson compile -C build
+}
+
+package() {
+  meson install -C build --destdir "$pkgdir"
+  install -Dm644 slurp/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}

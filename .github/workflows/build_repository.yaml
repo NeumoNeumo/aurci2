@@ -31,6 +31,9 @@ jobs:
           papis-zotero
         missing_aur_dependencies: >
           python-sphinx_design
+        custom_pkgbuild_directories: >
+          pkgbuilds/slurp
+
 
     - name: List generated Files
       run: ls -1 > ${{ github.workspace }}/files.txt
