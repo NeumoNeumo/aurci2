@@ -22,6 +22,14 @@ jobs:
     - name: Build Packages
       uses: NeumoNeumo/build-aur-packages@master
       with:
+        packages: >
+          rime-frost-git
+          libfprint-cs9711-git
+          mogan-bin
+          portable
+          swaylock-plugin
+          sioyek-git
+          xray-bin
         custom_pkgbuild_directories: >
           pkgbuilds/slurp
 
