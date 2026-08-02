@@ -25,9 +25,7 @@ jobs:
       with:
         packages: >
           rime-frost-git
-          portable
           swaylock-plugin
-          xray-bin
         custom_pkgbuild_directories: >
           pkgbuilds/libfprint-cs9711-rebase-git
           pkgbuilds/slurp
