@@ -14,12 +14,13 @@ jobs:
     steps:
     - name: Get current time and date
       id: date
-      run: echo "::set-output name=date::$(date +'%Y-%m-%d %H:%M')"
+      run: echo "date=$(date +'%Y-%m-%d %H:%M')" >> "$GITHUB_OUTPUT"
 
     - name: Checkout
       uses: actions/checkout@v6
 
     - name: Build Packages
+      id: build
       uses: NeumoNeumo/build-aur-packages@master
       with:
         packages: >
@@ -31,16 +32,37 @@ jobs:
           pkgbuilds/libfprint-cs9711-rebase-git
           pkgbuilds/slurp
 
+    - name: Summarize build failures
+      if: ${{ failure() && !cancelled() }}
+      env:
+        FAILED_BUILDS: ${{ steps.build.outputs.failed_builds }}
+      run: |
+        {
+          echo "## AUR repository build failed"
+          echo
+          if jq -e 'type == "array" and length > 0' <<< "$FAILED_BUILDS" > /dev/null 2>&1; then
+            echo "The repository was generated with these failed builds:"
+            echo
+            jq -r '.[] | "- `\(.)`"' <<< "$FAILED_BUILDS"
+          else
+            echo "The action failed before it could generate a partial repository."
+          fi
+        } >> "$GITHUB_STEP_SUMMARY"
 
     - name: List generated Files
+      id: list-files
+      if: ${{ !cancelled() && steps.build.outputs.repository_ready == 'true' }}
       run: ls -1 > ${{ github.workspace }}/files.txt
     - name: Remove the current data from the release
+      id: delete-release
+      if: ${{ !cancelled() && steps.build.outputs.repository_ready == 'true' && steps.list-files.outcome == 'success' }}
       uses: kopp/action-delete-release@v1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         tag_name: aurci2
     - name: Upload Files to Release
+      if: ${{ !cancelled() && steps.build.outputs.repository_ready == 'true' && steps.list-files.outcome == 'success' && steps.delete-release.outcome == 'success' }}
       uses: softprops/action-gh-release@v2
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
