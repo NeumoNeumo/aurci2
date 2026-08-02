@@ -1,6 +1,6 @@
 --- a/libfprint/sigfm/meson.build
 +++ b/libfprint/sigfm/meson.build
-@@ -1,7 +1,13 @@
+@@ -1,7 +1,14 @@
  
  sigfm_sources = ['sigfm.cpp']
  
