@@ -1,0 +1,37 @@
+pkgname=wmenu
+pkgver=0.2.0.r1.g8fe04a0
+pkgrel=1
+pkgdesc="Efficient dynamic menu for Sway and wlroots-based Wayland compositors"
+arch=('x86_64')
+url="https://github.com/NeumoNeumo/wmenu"
+license=('MIT')
+depends=(
+  'libcairo.so'
+  'libpango-1.0.so'
+  'libwayland-client.so'
+  'libxkbcommon.so'
+)
+makedepends=(
+  'git'
+  'meson'
+  'ninja'
+  'scdoc'
+  'wayland-protocols'
+)
+source=("$pkgname::git+$url.git#branch=main")
+sha256sums=('SKIP')
+
+pkgver() {
+  cd "$pkgname"
+  git describe --tags --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+build() {
+  arch-meson "$pkgname" build
+  meson compile -C build
+}
+
+package() {
+  meson install -C build --destdir "$pkgdir"
+  install -Dm644 "$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}

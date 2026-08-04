@@ -29,6 +29,7 @@ jobs:
         custom_pkgbuild_directories: >
           pkgbuilds/libfprint-cs9711-rebase-git
           pkgbuilds/slurp
+          pkgbuilds/wmenu
 
     - name: Summarize build failures
       if: ${{ failure() && !cancelled() }}
