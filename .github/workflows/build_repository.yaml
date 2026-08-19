@@ -24,6 +24,7 @@ jobs:
       uses: NeumoNeumo/build-aur-packages@master
       with:
         packages: >
+          portable
           rime-frost-git
           swaylock-plugin
         custom_pkgbuild_directories: >
