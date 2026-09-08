@@ -27,6 +27,7 @@ jobs:
           portable
           rime-frost-git
           swaylock-plugin
+          ffmpeg-full
         custom_pkgbuild_directories: >
           pkgbuilds/libfprint-cs9711-rebase-git
           pkgbuilds/slurp
